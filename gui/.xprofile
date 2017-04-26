@@ -1,0 +1,3 @@
+setxkbmap ie
+xrandr --dpi 192
+[ -s "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local"
