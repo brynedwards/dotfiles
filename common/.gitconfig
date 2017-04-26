@@ -1,0 +1,7 @@
+[user]
+	email = bryn@opmbx.org
+	name = Bryn Edwards
+[push]
+	default = simple
+[url "git://github.com/ghc/packages-"]
+	insteadOf = git://github.com/ghc/packages/

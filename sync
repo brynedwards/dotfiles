@@ -1,0 +1,10 @@
+#!/bin/zsh
+source $HOME/.keychain/$(hostname)-sh
+cd $HOME/.dotfiles
+git pull
+git add -A .
+git commit -m "Auto-sync @ $(date)"
+git push
+for F in "$@"; do
+  stow --no-folding "$F"
+done

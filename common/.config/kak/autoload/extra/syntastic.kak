@@ -1,0 +1,1 @@
+/home/bryn/.local/share/kakoune-extra/syntastic.kak
