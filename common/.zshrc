@@ -64,11 +64,14 @@ if ! zplug check; then
 fi
 
 zplug load
-PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
+PATH=$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
+if command -v ruby >/dev/null 2>&1; then
+    PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH
+fi
 typeset -U path
 
 # TMUX
-if which tmux >/dev/null 2>&1; then
+if command -v tmux >/dev/null 2>&1; then
     #if not inside a tmux session, and if no session is started, start a new session
     test -z "$TMUX" && (tmux attach || tmux new-session ranger)
 fi
