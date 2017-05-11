@@ -1,4 +1,4 @@
-colorscheme base16
+#colorscheme base16
 
 hook global WinCreate ^[^*]+$ %{
     addhl number_lines -hlcursor

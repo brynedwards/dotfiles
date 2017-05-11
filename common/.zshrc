@@ -20,15 +20,11 @@ bindkey "^F" history-incremental-search-backward
 
 export EDITOR="kak"
 
-alias aud='mpv --no-video "$(xsel -b)"'
-alias dl='youtube-dl "$(xsel -b)"'
 alias mpvboth='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=both'
 alias mpvpitch='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=pitch'
 alias rmed='find . -type d -empty -delete'
-alias tc='transmission-cli "$(xsel -b)"'
-alias vid='mpv "$(xsel -b)"'
-alias mm='sudo mount nucky:/media $HOME/media'
-alias umm='sudo umount $HOME/media'
+alias tc='transmission-cli'
+alias ytdl='youtube-dl'
 alias -g L='| less'
 alias -g LL='2>&1 | less'
 alias -g C='"$(xsel -b)"'
