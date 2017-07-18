@@ -47,19 +47,9 @@ PS1="%{%F{010}%}\
 
 [[ -s ~/.zshrc.local ]] && source ~/.zshrc.local
 
-source /usr/share/zsh/scripts/zplug/init.zsh
+source <(antibody init)
+antibody bundle < $HOME/.local/share/antibody/plugins
 
-# zplug "Valiev/almostontop"
-zplug "Tarrasch/zsh-autoenv"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting"
-
-if ! zplug check; then
-    zplug install
-fi
-
-zplug load
 PATH=$HOME/.local/bin:$PATH
 typeset -U path
 

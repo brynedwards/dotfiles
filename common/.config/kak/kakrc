@@ -1,4 +1,4 @@
-#colorscheme base16
+colorscheme base16
 set global indentwidth 2
 
 hook global WinCreate ^[^*]+$ %{
@@ -39,6 +39,9 @@ hook global WinSetOption filetype=haskell %{
     map -docstring "Save" global user w %{: write<ret>,r}
 }
 
+hook global WinSetOption filetype=python %{
+  set buffer indentwidth 4
+}
 #hook global BufWritePost filetype=haskell %{
     #tmux-send-command ":r"
 #}
