@@ -3,6 +3,7 @@ map w scroll up
 map s scroll down
 map e scroll half-up
 map d scroll half-down
+map u scroll half-up
 map b scroll full-up
 map space scroll full-down
 map <C-d> toggle_page_mode
