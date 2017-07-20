@@ -12,8 +12,10 @@ map -docstring "Comment the current selection" global user C %{: comment-block<r
 map -docstring "Open" global user d %{: write<ret>}
 map -docstring "Open local kakrc"  global user e %{: e ~/.config/kak/kakrc<ret>}
 map -docstring "Format selection to 80 column width" global user f '|fmt -w80<ret>'
+map -docstring "Open horizontal Tmux repl " global user H %{: tmux-repl-horizontal<ret>}
 map -docstring "Open fuzzy file finder" global user o %{: fzf .<ret>}
-map -docstring "Paste X11 clipboard" global user p %{ia<esc>h|xsel -b<ret>}
+map -docstring "Paste X11 clipboard after selection" global user p %{<a-!>xsel -b<ret>}
+map -docstring "Paste X11 clipboard after selection" global user P %{!xsel -b<ret>}
 map -docstring "Copy selection to X11 clipboard" global user \
   y %{<a-|>xsel -b<ret>;: echo -color Information "copied selection to X11 clipboard"<ret>}
 
@@ -35,7 +37,7 @@ hook global WinSetOption filetype=haskell %{
             : %sh{  echo "tmux-repl-horizontal \"stack ghci\"" }<ret>: tmux-focus<ret> }
     map -docstring "Reload GHCi buffer" buffer user r %{: tmux-send-command ":r"<ret>}
     map -docstring "Indent file" buffer user i %{%,I<ret>}
-    map -docstring "Indent selection" buffer user I %{|hindent|stylish-haskell<ret>}
+    map -docstring "Indent selection" buffer user I %{|format-haskell<ret>}
     map -docstring "Save" global user w %{: write<ret>,r}
 }
 

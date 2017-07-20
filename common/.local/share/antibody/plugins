@@ -1,6 +1,9 @@
+hlissner/zsh-autopair
+mafredri/zsh-async
+sindresorhus/pure
 Valiev/almostontop
-Tarrasch/zsh-autoenv
+zpm-zsh/autoenv
+zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
-zsh-users/zsh-syntax-highlighting
-
+zuxfoucault/colored-man-pages_mod

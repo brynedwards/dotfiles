@@ -2,18 +2,41 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+#REPORTTIME=10
 setopt HIST_IGNORE_DUPS
-setopt NO_HUP
 setopt NO_CHECK_JOBS
+
+setopt noflowcontrol
+setopt prompt_subst
+setopt append_history
+setopt extended_history
+setopt share_history
+setopt longlistjobs
+setopt nonomatch
+setopt notify
+setopt hash_list_all
+setopt completeinword
+setopt noshwordsplit
+setopt interactivecomments
+setopt extended_glob
+setopt unset
+setopt histignorealldups
+setopt histignorespace
+setopt auto_cd
+setopt nohup
+setopt noglobdots
+
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/bryn/.zshrc'
 
-autoload -Uz bashcompinit colors compinit
+autoload -U bashcompinit colors compinit promptinit
 bashcompinit
 colors
 compinit
+promptinit
+
 # End of lines added by compinstall
 bindkey "^R" history-incremental-search-backward
 bindkey "^F" history-incremental-search-backward
@@ -35,20 +58,11 @@ eval $(keychain --eval --agents ssh -Q -q id_rsa)
 LADSPA_PATH=/usr/lib/ladspa:/usr/local/lib/ladspa:~/.ladspa
 DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi
 
-PS1="%{%F{010}%}\
-%n\
-%{%F{014}%}\
-@\
-%{%F{012}%}\
-%m\
-%{%F{011}%}\
- %~/\
-%{$reset_color%}> "
-
 [[ -s ~/.zshrc.local ]] && source ~/.zshrc.local
 
 source <(antibody init)
 antibody bundle < $HOME/.local/share/antibody/plugins
+source /usr/share/autojump/autojump.zsh
 
 PATH=$HOME/.local/bin:$PATH
 typeset -U path
