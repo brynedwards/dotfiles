@@ -1,8 +1,8 @@
 hlissner/zsh-autopair
 mafredri/zsh-async
 sindresorhus/pure
+Tarrasch/zsh-autoenv
 Valiev/almostontop
-zpm-zsh/autoenv
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
