@@ -1,1 +1,6 @@
+pkill redshift
+redshift &
+pkill compton
 compton -b
+hsetroot -solid '#000000' &
+xsetroot -cursor_name left_ptr &

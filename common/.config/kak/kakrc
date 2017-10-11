@@ -1,6 +1,10 @@
 colorscheme base16
 set global indentwidth 2
 
+hook global WinSetOption filetype=(kakrc|python) %{
+  set buffer indentwidth 4
+}
+
 hook global WinCreate .* %{
     addhl number_lines -hlcursor -relative
     addhl show_matching
