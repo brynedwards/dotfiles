@@ -31,15 +31,16 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/bryn/.zshrc'
 
-autoload -U bashcompinit colors compinit promptinit
+autoload -U bashcompinit colors compinit
 bashcompinit
 colors
 compinit
-promptinit
+
+PROMPT='%F{blue}%~%f ❯ '
 
 # End of lines added by compinstall
 bindkey "^R" history-incremental-search-backward
-bindkey "^F" history-incremental-search-backward
+bindkey "^F" history-incremental-search-forward
 
 export EDITOR="kak"
 
@@ -71,12 +72,3 @@ typeset -U path
 if command -v stack >/dev/null 2>&1; then
     eval "$(stack --bash-completion-script stack)"
 fi
-
-# TMUX
-if command -v tmux >/dev/null 2>&1; then
-    #if not inside a tmux session, and if no session is started, start a new session
-    test -z "$TMUX" && (tmux attach || tmux new-session ranger)
-fi
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

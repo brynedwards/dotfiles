@@ -1,1 +1,0 @@
-/home/bryn/.local/share/kakoune-extra/fzf.kak

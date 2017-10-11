@@ -1,0 +1,2 @@
+#!/bin/sh
+readability "$1" | lynx -stdin

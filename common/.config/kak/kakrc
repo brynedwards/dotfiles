@@ -1,63 +1,22 @@
 colorscheme base16
 set global indentwidth 2
 
-hook global WinCreate ^[^*]+$ %{
-    addhl number_lines -hlcursor
+hook global WinCreate .* %{
+    addhl number_lines -hlcursor -relative
     addhl show_matching
 }
 
+#set global termcmd 'st -e sh -c'
 
 map -docstring "Comment the current line" global user c %{: comment-line<ret>}
 map -docstring "Comment the current selection" global user C %{: comment-block<ret>}
 map -docstring "Open local kakrc"  global user e %{: e ~/.config/kak/kakrc<ret>}
 map -docstring "Format selection to 80 column width" global user f '|fmt -w80<ret>'
 map -docstring "Open horizontal Tmux repl " global user H %{: tmux-repl-horizontal<ret>}
-map -docstring "Open fuzzy file finder in current directory" global user o %{: fzf .<ret>}
+map -docstring "Split" global user n %{: x11-new<ret>}
+map -docstring "Open fuzzy file finder in current directory" global user o %{: dmenu .<ret>}
 map -docstring "Paste X11 clipboard after selection" global user p %{<a-!>xsel -b<ret>}
 map -docstring "Paste X11 clipboard after selection" global user P %{!xsel -b<ret>}
 map -docstring "Copy selection to X11 clipboard" global user \
   y %{<a-|>xsel -b<ret>;: echo "copied selection to X11 clipboard"<ret>}
 
-hook global InsertChar k %{ try %{
-  exec -draft hH <a-k>jk<ret> d
-  exec <esc>
-}}
-
-# kak config "conveniences" (this doesn't seem to work that well atm)
-hook global WinSetOption filetype=kak %{
-    map -docstring "Source current file" buffer user r \
-        ':write<ret>:%sh{ printf %s\\n "source ${kak_buffile}"}<ret>'
-}
-# Haskell
-hook global WinSetOption filetype=haskell %{
-    set buffer indentwidth 2
-    map -docstring "Create tmux repl, start GHCi and load current buffer" \
-        buffer user <a-r> %{\
-            : %sh{  echo "tmux-repl-horizontal \"stack ghci\"" }<ret>: tmux-focus<ret> }
-    map -docstring "Reload GHCi buffer" buffer user r %{: tmux-send-command ":r"<ret>}
-    map -docstring "Indent file" buffer user i %{%,I<ret>}
-    map -docstring "Indent selection" buffer user I %{|format-haskell<ret>}
-    map -docstring "Save" global user w %{: write<ret>,r}
-}
-
-hook global WinSetOption filetype=python %{
-  set buffer indentwidth 4
-}
-#hook global BufWritePost filetype=haskell %{
-    #tmux-send-command ":r"
-#}
-
-#Tmux repl
-def -allow-override tmux-send-command -params 0..1 %{
-    nop %sh{
-        tmux set-buffer -b kak_selection "$1"
-        kak_orig_window=$(tmux display-message -p '#I')
-        kak_orig_pane=$(tmux display-message -p '#P')
-        tmux select-window -t:$(tmux show-buffer -b kak_repl_window)
-        tmux select-pane -t:.$(tmux show-buffer -b kak_repl_pane)
-        tmux paste-buffer -b kak_selection
-        tmux send-keys Enter
-        tmux select-window -t:${kak_orig_window}
-        tmux select-pane -t:.${kak_orig_pane}
-    }
-}

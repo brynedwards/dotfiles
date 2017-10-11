@@ -1,0 +1,7 @@
+Xft.dpi: 120
+rofi.font: sans-serif bold 12
+
+XTerm.termName: xterm-256color
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?

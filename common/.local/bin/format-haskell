@@ -1,0 +1,8 @@
+#!/bin/sh
+input="$(cat)"
+output="$(echo "$input" | stylish-haskell | brittany)"
+if [ -z "$output" ]; then
+  echo "$input"
+else
+  echo "$output"
+fi
