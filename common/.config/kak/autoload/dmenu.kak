@@ -12,7 +12,7 @@ If no directories are given then the directory in which the current buffer was s
         cwd=$(dirname "${kak_buffile}" | sed 's/\//\\\//g')
     fi
     filesearch_cmd=$(printf %s "${kak_opt_dmenu_filesearch_cmd}" | sed "s/%s/${cwd}/g")
-    eval "${filesearch_cmd}" | eval "dmenu" | while read path; do
+    eval "${filesearch_cmd}" | eval "dmenu -i" | while read path; do
         printf "eval -try-client '%s' edit '%s'" "${kak_client}" "${path}" \
             | kak -p "${kak_session}"
     done

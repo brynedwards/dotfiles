@@ -41,7 +41,7 @@ myBar :: String
 myBar = "xmobar"
 
 myTerm :: String
-myTerm = "alacritty"
+myTerm = "st"
 
 myPP :: Handle -> PP
 myPP h = xmobarPP { ppCurrent = xmobarColor "#44c7f1" ""

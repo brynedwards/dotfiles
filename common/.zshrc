@@ -46,6 +46,7 @@ export EDITOR="kak"
 
 alias mpvboth='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=both'
 alias mpvpitch='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=pitch'
+alias ra='ranger'
 alias rmed='find . -type d -empty -delete'
 alias tc='transmission-cli'
 alias ytdl='youtube-dl'

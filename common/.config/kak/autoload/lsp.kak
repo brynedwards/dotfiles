@@ -13,9 +13,9 @@ decl str lsp_servers %{
 # Example keybindings
 map -docstring %{Goto definition}     global user . ':lsp-goto-definition<ret>'
 map -docstring %{Select references}   global user r ':lsp-references<ret>'
-map -docstring %{Hover help}          global user h ':lsp-hover docsclient<ret>'
-map -docstring %{Next diagnostic}     global user j ':lsp-diagnostics next cursor<ret>'
-map -docstring %{Previous diagnostic} global user k ':lsp-diagnostics prev cursor<ret>'
+map -docstring %{Hover help}          global user h ':lsp-hover cursor<ret>'
+map -docstring %{Next diagnostic}     global user j ':lsp-diagnostics-jump next cursor<ret>'
+map -docstring %{Previous diagnostic} global user k ':lsp-diagnostics-jump prev cursor<ret>'
 
 # Manual completion and signature help when needed
 map global insert <a-c> '<a-;>:eval -draft %(exec b; lsp-complete)<ret>'
@@ -41,7 +41,7 @@ def lsp-start %{
                       remove-hooks buffer fifo
                   }
               }"
-        ( lspc $kak_session > ${dir}/fifo 2>&1
+        ( python $HOME/.local/share/libkak/lspc.py $kak_session > ${dir}/fifo 2>&1
         ) > /dev/null 2>&1 < /dev/null &
     }
 
