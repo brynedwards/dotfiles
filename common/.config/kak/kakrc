@@ -17,11 +17,12 @@ map -docstring "Comment the current selection" global user c %{: comment-block<r
 map -docstring "Open local kakrc"  global user e %{: e ~/.config/kak/kakrc<ret>}
 map -docstring "Format selection to 80 column width" global user f '|fmt -w80<ret>'
 map -docstring "Open horizontal Tmux repl " global user H %{: tmux-repl-horizontal<ret>}
-map -docstring "Split" global user n %{: x11-new<ret>}
 map -docstring "Open fuzzy file finder in current directory" global user o %{: dmenu .<ret>}
 map -docstring "Paste X11 clipboard after selection" global user p %{<a-!>xsel -b<ret>}
 map -docstring "Paste X11 clipboard after selection" global user P %{!xsel -b<ret>}
 map -docstring "Open X11 repl" global user R %{: my-x11-repl<ret>}
+map -docstring "Open split" global user s %{: x11-new<ret>}
+map -docstring "Open terminal window" global user t %{: x11-term<ret>}
 map -docstring "Copy selection to X11 clipboard" global user \
   y %{<a-|>xsel -b<ret>;: echo "copied selection to X11 clipboard"<ret>}
 

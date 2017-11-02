@@ -4,11 +4,6 @@ All optional parameters are forwarded to the new window} \
     -params .. \
     -command-completion \
     my-x11-repl %{ %sh{
-        if [ -z "${kak_opt_termcmd}" ]; then
-           echo "echo -markup '{Error}termcmd option is not set'"
-           exit
-        fi
-        if [ $# -eq 0 ]; then cmd="${SHELL:-sh}"; else cmd="$@"; fi
         setsid st -t kak_repl_${kak_client_pid} < /dev/null > /dev/null 2>&1 &
 }}
 

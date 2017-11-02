@@ -1,7 +1,49 @@
 Xft.dpi: 120
-rofi.font: sans-serif bold 12
 
 XTerm.termName: xterm-256color
 XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.backarrowKey: false
+XTerm.vt100.locale: true
 XTerm.ttyModes: erase ^?
+XTerm.vt100.faceName: Mono:size=11:antialias=true:autohint=true
+
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #252525
+*.color8:       #454545
+
+! red
+*.color1:       #ef6769
+*.color9:       #fc7ca5
+
+! green
+*.color2:       #a6e22e
+*.color10:      #b6e354
+
+! yellow
+*.color3:       #fd971f
+*.color11:      #fd971f
+
+! blue
+*.color4:       #6495ed
+*.color12:      #87ceeb
+
+! magenta
+*.color5:       #deb887
+*.color13:      #996600
+
+! cyan
+*.color6:       #b0c4de
+*.color14:      #87ceeb
+
+! white
+*.color7:       #dbdcdc
+*.color15:      #fdfdfd
+
+URxvt.font: xft:mono:size=11:antialias=true:autohint=true
+URxvt.letterSpace: -1
+URxvt.scrollBar: false

@@ -69,10 +69,11 @@ myAdditionalKeys =
   , ((controlMask .|. mod1Mask, xK_j), spawn "pamixer -d 4")
   , ((controlMask .|. mod1Mask, xK_k), spawn "pamixer -i 4")
   , ((myModMask, xK_b)               , sendMessage ToggleStruts)
-  , ((myModMask, xK_p)               , spawn "rofi-pass")
-  , ((myModMask, xK_r)               , spawn "rofi -show run")
-  , ((myModMask, xK_x)               , commands >>= runCommand)
+  , ((myModMask, xK_d)               , spawn "dictionary-lookup")
+  , ((myModMask, xK_p)               , spawn "passdmenu -t")
+  , ((myModMask, xK_r)               , spawn "dmenu_run_history")
   , ((myModMask, xK_w)               , onNextNeighbour W.view)
+  , ((myModMask, xK_x)               , commands >>= runCommand)
   ]
    ++ [ ((m .|. myModMask, k), windows $ onCurrentScreen f i)
       | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]

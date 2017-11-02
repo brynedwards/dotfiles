@@ -4,6 +4,7 @@ hook global WinSetOption filetype=haskell %{
     map -docstring "Reload GHCi buffer" buffer user l %{: x11-send-command :r<ret>}
     map -docstring "Indent file" buffer user i %{%,I<ret>}
     map -docstring "Indent selection" buffer user I %{|format-haskell<ret>}
+    map buffer insert <a-.> ∘
 }
 
 hook global BufWritePost .*\.hs %{
