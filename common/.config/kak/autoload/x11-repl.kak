@@ -22,7 +22,7 @@ def -allow-override x11-send-command -params 0..1 %{
         wid=$(xdotool getactivewindow)
         if xdotool search --name kak_repl_${kak_client_pid} windowactivate; then
             xdotool type --clearmodifiers "$1"
-            sleep 0.075
+            sleep 0.1
             xdotool key --clearmodifiers "Return"
             xdotool windowactivate $wid
         fi

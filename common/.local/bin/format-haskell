@@ -4,5 +4,5 @@ output="$(echo "$input" | stylish-haskell | brittany)"
 if [ -z "$output" ]; then
   echo "$input"
 else
-  echo "$output"
+  printf '%s\n\n' "$output"
 fi

@@ -50,9 +50,12 @@ alias ra='ranger'
 alias rmed='find . -type d -empty -delete'
 alias tc='transmission-cli'
 alias ytdl='youtube-dl'
+alias -g C='"$(xsel -b)"'
+alias -g D='curl -LO C'
+alias -g G='git clone C'
 alias -g L='| less'
 alias -g LL='2>&1 | less'
-alias -g C='"$(xsel -b)"'
+alias -g Y='youtube-dl C'
 
 # Always register with keychain
 eval $(keychain --eval --agents ssh -Q -q id_rsa)
