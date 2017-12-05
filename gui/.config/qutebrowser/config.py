@@ -9,6 +9,7 @@ config.bind("E", "tab-prev")
 config.bind("R", "tab-next")
 
 config.bind("q", "tab-close")
+config.bind("Q", "undo")
 config.bind("t", "set-cmd-text -s :open -t")
 
 config.set("hints.chars", "qwerasdfzxcv")

@@ -49,7 +49,6 @@ alias mpvpitch='mpv --no-audio-display --audio-pitch-correction=no --af=scaletem
 alias ra='ranger'
 alias rmed='find . -type d -empty -delete'
 alias tc='transmission-cli'
-alias ytdl='youtube-dl'
 alias -g C='"$(xsel -b)"'
 alias -g D='curl -LO C'
 alias -g G='git clone C'
@@ -76,3 +75,8 @@ typeset -U path
 if command -v stack >/dev/null 2>&1; then
     eval "$(stack --bash-completion-script stack)"
 fi
+
+rand()
+{
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n1
+}

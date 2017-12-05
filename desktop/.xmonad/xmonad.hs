@@ -24,7 +24,9 @@ main = do
   xmonad $ ewmh $ docks
       def { terminal    = myTerm
           , modMask     = myModMask
-          , borderWidth = 0
+          , borderWidth = 1
+          , normalBorderColor = "#a0a0a0"
+          , focusedBorderColor = "#eeeeee"
           , manageHook  = myManageHook
           , layoutHook  = myLayoutHook
           , workspaces  = withScreens 2 (map show ([1 .. 9] :: [Integer]))

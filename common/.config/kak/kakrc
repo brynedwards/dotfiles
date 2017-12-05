@@ -6,8 +6,8 @@ hook global WinSetOption filetype=(kakrc|python) %{
 }
 
 hook global WinCreate .* %{
-    addhl number_lines -hlcursor -relative
-    addhl show_matching
+    addhl global/ number_lines -hlcursor -relative
+    addhl global/ show_matching
 }
 
 #set global termcmd 'st -e sh -c'
