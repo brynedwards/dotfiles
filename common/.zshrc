@@ -78,5 +78,10 @@ fi
 
 rand()
 {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n1
+    tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w "${1:-32}" | head -n1
+}
+
+randw()
+{
+    shuf -n "${1:-1}" /usr/share/dict/words
 }
