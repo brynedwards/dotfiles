@@ -14,7 +14,6 @@ hook global WinCreate .* %{
 
 map -docstring "Comment the current line" global user C %{: comment-line<ret>}
 map -docstring "Comment the current selection" global user c %{: comment-block<ret>}
-map -docstring "Open local kakrc"  global user e %{: e ~/.config/kak/kakrc<ret>}
 map -docstring "Format selection to 80 column width" global user f '|fmt -w80<ret>'
 map -docstring "Open horizontal Tmux repl " global user H %{: tmux-repl-horizontal<ret>}
 map -docstring "Open fuzzy file finder in current directory" global user o %{: dmenu .<ret>}

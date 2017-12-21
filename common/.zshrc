@@ -85,3 +85,8 @@ randw()
 {
     shuf -n "${1:-1}" /usr/share/dict/words
 }
+
+pw()
+{
+    pwgen 16 1 | tr -d '\n' | xsel -b
+}
