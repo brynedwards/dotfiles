@@ -11,6 +11,8 @@ import           XMonad.Hooks.InsertPosition
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Layout.IndependentScreens
 import           XMonad.Layout.LayoutModifier     (ModifiedLayout)
+import           XMonad.Prompt
+import           XMonad.Prompt.Unicode
 import qualified XMonad.StackSet                  as W
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Run                  (spawnPipe)
@@ -58,7 +60,8 @@ myLayoutHook = avoidStruts $ Tall 1 (1 / 20) (1 / 2) ||| Full
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
   [ className =? "mpv" --> doFloat
-  , className =? "Thunderbird" --> doShift "2"
+  , className =? "Thunderbird" --> doShift "0_2"
+  , className =? "Clementine" --> doShift "0_3"
   , (className =? "Gimp" <&&> fmap ("tool"`isSuffixOf`) role) --> doFloat
   , manageDocks
   , insertPosition Below Newer
@@ -74,6 +77,7 @@ myAdditionalKeys =
   , ((myModMask, xK_d)               , spawn "dictionary-lookup")
   , ((myModMask, xK_p)               , spawn "passdmenu -t")
   , ((myModMask, xK_r)               , spawn "dmenu_run_history")
+  , ((myModMask, xK_u)               , unicodePrompt def)
   , ((myModMask, xK_w)               , onNextNeighbour W.view)
   , ((myModMask, xK_x)               , commands >>= runCommand)
   ]

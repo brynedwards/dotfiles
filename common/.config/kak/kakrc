@@ -12,11 +12,12 @@ hook global WinCreate .* %{
 
 #set global termcmd 'st -e sh -c'
 
+map -docstring "Open buffer via dmenu" global user b %{: dmenu-buffer .<ret>}
 map -docstring "Comment the current line" global user C %{: comment-line<ret>}
 map -docstring "Comment the current selection" global user c %{: comment-block<ret>}
 map -docstring "Format selection to 80 column width" global user f '|fmt -w80<ret>'
 map -docstring "Open horizontal Tmux repl " global user H %{: tmux-repl-horizontal<ret>}
-map -docstring "Open fuzzy file finder in current directory" global user o %{: dmenu .<ret>}
+map -docstring "Open file via dmenu" global user o %{: dmenu-open .<ret>}
 map -docstring "Paste X11 clipboard after selection" global user p %{<a-!>xsel -b<ret>}
 map -docstring "Paste X11 clipboard after selection" global user P %{!xsel -b<ret>}
 map -docstring "Open X11 repl" global user R %{: my-x11-repl<ret>}
