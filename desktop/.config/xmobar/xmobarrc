@@ -31,6 +31,6 @@ Config {
     \    <fc=#ffaf64>%memory%</fc>\
     \    <fc=#fff275>%coretemp%</fc>\
     \    <fc=#7dcfb6>%default:Master%</fc>\
-    \    <fc=#00ff00>%dynnetwork%</fc>\
-    \    <fc=#44c7f1>%date%</fc>"
+    \    <fc=#44c7f1>%dynnetwork%</fc>\
+    \    <fc=#a784f1>%date%</fc>"
   }
