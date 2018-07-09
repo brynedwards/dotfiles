@@ -1,5 +1,5 @@
 # termcmd should already be set in x11.kak
-def -allow-override -docstring %{x11-repl [<arguments>]: create a new window for repl interaction
+def -docstring %{x11-repl [<arguments>]: create a new window for repl interaction
 All optional parameters are forwarded to the new window} \
     -params .. \
     -command-completion \
@@ -7,7 +7,7 @@ All optional parameters are forwarded to the new window} \
         setsid st -t kak_repl_${kak_client_pid} < /dev/null > /dev/null 2>&1 &
 }}
 
-def -allow-override my-x11-send-text -docstring "send the selected text to the repl window" %{
+def my-x11-send-text -docstring "send the selected text to the repl window" %{
     nop %sh{
         printf %s\\n "${kak_selection}" | xsel -i
         wid=$(xdotool getactivewindow)
@@ -17,12 +17,12 @@ def -allow-override my-x11-send-text -docstring "send the selected text to the r
     }
 }
 
-def -allow-override x11-send-command -params 0..1 %{
+def x11-send-command -params 0..1 %{
     nop %sh{
         wid=$(xdotool getactivewindow)
         if xdotool search --name kak_repl_${kak_client_pid} windowactivate; then
             xdotool type --clearmodifiers "$1"
-            sleep 0.1
+            sleep 0.2
             xdotool key --clearmodifiers "Return"
             xdotool windowactivate $wid
         fi

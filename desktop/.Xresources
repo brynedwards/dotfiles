@@ -1,4 +1,4 @@
-Xft.dpi: 120
+Xft.dpi: 96
 
 XTerm*decTerminalID: vt340
 XTerm*numColorRegisters: 256
@@ -46,6 +46,6 @@ XTerm.vt100.faceName: Mono:size=11:antialias=true:autohint=true
 *.color7:       #dbdcdc
 *.color15:      #fdfdfd
 
-URxvt.font: xft:mono:size=11:antialias=true:autohint=true
+URxvt.font: xft:Dina-6:antialias=true,xft:FontAwesome:size=8:antialias=true
 URxvt.letterSpace: -1
 URxvt.scrollBar: false

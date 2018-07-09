@@ -1,0 +1,37 @@
+" Left-hand navigation binds
+
+bind w scrollline -5
+bind s scrollline 5
+bind e scrollpage -0.5
+bind d scrollpage 0.5
+
+bind S back
+bind D forward
+bind E tabprev
+bind R tabnext
+
+bind q tabclose
+bind Q undo
+
+bind v fillcmdline buffer
+bind b scrollpage -1
+
+" For passff
+unbind <c-y>
+
+guiset gui none
+guiset navbar always
+guiset hoverlink left
+
+set searchurls.aw https://wiki.archlinux.org/index.php?title=Special%3ASearch&go=Go&search=
+set searchurls.ggl https://www.google.ie/search?q=
+set searchurls.h https://hackage.haskell.org/package/
+set searchurls.s https://duckduckgo.com/?q=
+set searchurls.ya https://search.yahoo.com/search?p=
+set searchurls.w https://en.wikipedia.org/wiki/Special:Search/
+set searchurls.yt https://www.youtube.com/results?search_query=
+set searchurls.sp https://startpage.com/do/search?language=english&cat=web&query=
+set searchurls.gh https://github.com/search?utf8=✓&q=
+
+set theme dark
+set searchengine duckduckgo

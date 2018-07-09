@@ -1,6 +1,6 @@
 #!/bin/sh
 input="$(cat)"
-output="$(echo "$input" | hindent | stylish-haskell)"
+output="$(echo "$input" | brittany | stylish-haskell)"
 if [ -z "$output" ]; then
   echo "$input"
 else

@@ -1,6 +1,6 @@
 Config {
-  font = "xft:Sans:size=10:style=bold"
-, additionalFonts = [ "xft:FontAwesome:size=10" ]
+  font = "xft:xos4 Terminus:pixelsize=12"
+, additionalFonts = [ "xft:FontAwesome:size=8" ]
 , commands = [
   Run Date "%a %b %_d %H:%M:%S" "date" 10
   , Run MultiCpu [
@@ -21,16 +21,16 @@ Config {
   , "-c", "#64a692"
   ] 30
   , Run DynNetwork [
-    "-t", "<fn=1></fn><rx>KB/s    <fn=1></fn><tx>KB/s"
+    "-t", "<fn=1></fn> <rx>KB/s  <fn=1></fn> <tx>KB/s"
   ] 30
   , Run StdinReader
   ]
 , template =
     "%StdinReader% }{\
-    \    <fc=#e85b5d>%multicpu%</fc>\
-    \    <fc=#ffaf64>%memory%</fc>\
-    \    <fc=#fff275>%coretemp%</fc>\
-    \    <fc=#7dcfb6>%default:Master%</fc>\
-    \    <fc=#44c7f1>%dynnetwork%</fc>\
+    \  <fc=#e85b5d>%multicpu%</fc>\
+    \  <fc=#ffaf64>%memory%</fc>\
+    \  <fc=#fff275>%coretemp%</fc>\
+    \  <fc=#7dcfb6>%default:Master%</fc>\
+    \  <fc=#44c7f1>%dynnetwork%</fc>\
     \    <fc=#a784f1>%date%</fc>"
   }

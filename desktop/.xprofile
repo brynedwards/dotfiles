@@ -1,3 +1,4 @@
+export EDITOR="kak"
 export PATH="$HOME/.local/bin:$PATH"
 pkill redshift
 redshift &

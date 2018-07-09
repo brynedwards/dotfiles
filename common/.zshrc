@@ -36,7 +36,7 @@ bashcompinit
 colors
 compinit
 
-PROMPT='%F{blue}%~%f ❯ '
+PROMPT='%F{cyan}%~%f $ '
 
 # End of lines added by compinstall
 bindkey "^R" history-incremental-search-backward
@@ -44,6 +44,8 @@ bindkey "^F" history-incremental-search-forward
 
 export EDITOR="kak"
 
+alias less="less -R"
+alias ls="ls --color=auto"
 alias mpvboth='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=both'
 alias mpvpitch='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=pitch'
 alias ra='ranger'

@@ -5,7 +5,3 @@ hook global WinSetOption filetype=haskell %{
     map -docstring "Indent selection" buffer user i %{|format-haskell<ret>}
     map -docstring "Run main" buffer user m %{: x11-send-command main<ret>}
 }
-
-hook global BufWritePost .*\.hs %{
-  x11-send-command ':r'
-}

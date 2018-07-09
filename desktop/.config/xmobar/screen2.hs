@@ -1,5 +1,5 @@
 Config {
-  font = "xft:Sans:size=10:style=bold"
+  font = "xft:xos4 Terminus:pixelsize=12"
 , commands = [ Run StdinReader ]
 , template = "%StdinReader%"
   }
