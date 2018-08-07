@@ -1,9 +1,15 @@
+" Reset to default binds
+
+sanitise tridactyllocal tridactylsync
+
 " Left-hand navigation binds
 
 bind w scrollline -5
 bind s scrollline 5
 bind e scrollpage -0.5
 bind d scrollpage 0.5
+bind b scrollpage -0.95
+bind <Space> scrollpage 0.95
 
 bind S back
 bind D forward
@@ -13,19 +19,21 @@ bind R tabnext
 bind q tabclose
 bind Q undo
 
-bind v fillcmdline buffer
-bind b scrollpage -1
+bind <Tab> fillcmdline buffer
 
 " For passff
 unbind <c-y>
 
-guiset gui none
-guiset navbar always
-guiset hoverlink left
+" guiset gui none
+" guiset navbar always
+" guiset hoverlink left
 
+set searchurls.aur https://aur.archlinux.org/packages/
+set searchurls.aurs https://aur.archlinux.org/packages/?O=0&SeB=nd&outdated=&SB=n&SO=a&PP=50&do_Search=Go&K=
 set searchurls.aw https://wiki.archlinux.org/index.php?title=Special%3ASearch&go=Go&search=
 set searchurls.ggl https://www.google.ie/search?q=
 set searchurls.h https://hackage.haskell.org/package/
+set searchurls.hs https://hackage.haskell.org/packages/search?terms=
 set searchurls.s https://duckduckgo.com/?q=
 set searchurls.ya https://search.yahoo.com/search?p=
 set searchurls.w https://en.wikipedia.org/wiki/Special:Search/
