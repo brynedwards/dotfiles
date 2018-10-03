@@ -51,6 +51,7 @@ alias mpvpitch='mpv --no-audio-display --audio-pitch-correction=no --af=scaletem
 alias ra='ranger'
 alias rmed='find . -type d -empty -delete'
 alias tc='transmission-cli'
+alias viewcsv='column -ts $"\t" | less'
 alias -g C='"$(xsel -b)"'
 alias -g D='curl -LO C'
 alias -g G='git clone C'
