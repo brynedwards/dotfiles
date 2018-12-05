@@ -93,3 +93,11 @@ pw()
 {
     pwgen 16 1 | tr -d '\n' | xsel -b
 }
+
+jsonfmt()
+{
+  for f in "$@"; do
+    out=$(mktemp)
+    jq . "$f" > "$out" && mv "$out" "$f"
+  done
+}

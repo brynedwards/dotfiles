@@ -6,3 +6,5 @@ pkill compton
 compton -b
 hsetroot -solid '#000000' &
 xsetroot -cursor_name left_ptr &
+xss-lock -- slock &
+xautolock -time 10 -locker slock &

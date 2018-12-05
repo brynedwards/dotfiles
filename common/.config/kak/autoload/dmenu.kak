@@ -5,7 +5,7 @@ Each occurence of the `%s` string will be replaced with the directory to list} \
 def -params .. -file-completion \
     -docstring %{dmenu-open [<dirs>]: open a file in the given directories
 If no directories are given then the directory in which the current buffer was saved is used} \
-    dmenu-open %{ %sh{
+    dmenu-open %{ evaluate-commands %sh{
     if [ $# -ge 1 ]; then
         cwd=$(printf %s "$@" | sed 's/\//\\\//g')
     else
@@ -20,7 +20,7 @@ If no directories are given then the directory in which the current buffer was s
 
 def -params .. -file-completion \
     -docstring %{dmenu-buffer [<buffer>]: set buffer to edit in the current client} \
-    dmenu-buffer %{ %sh{
+    dmenu-buffer %{ evaluate-commands %sh{
     if [ $# -ge 1 ]; then
         cwd=$(printf %s "$@" | sed 's/\//\\\//g')
     else
