@@ -14,13 +14,16 @@ config.bind("q", "tab-close")
 config.bind("Q", "undo")
 config.bind("t", "set-cmd-text -s :open -t")
 
-config.bind("<Tab>", "set-cmd-text -s :buffer")
+# config.bind("<Tab>", "set-cmd-text -s :buffer")
+
+# config.bind("gc", "spawn --userscript readability")
 
 c.colors.hints.fg = "white"
 c.colors.hints.match.fg = "cyan"
 c.colors.hints.bg = "rgba(0, 0, 0, 0.8)"
 
-c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+
 
 c.hints.chars = "qwerasdfzxcv"
 c.hints.uppercase = True
@@ -39,8 +42,8 @@ c.fonts.tabs = "8pt monospace"
 
 
 c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
-    'g': 'https://google.ie/search?q={}',
+    'DEFAULT': 'https://google.ie/search?q={}',
+    'ddg': 'https://duckduckgo.com/?q={}',
     'aw': 'https://wiki.archlinux.org/?search={}',
     'w': 'https://en.wikipedia.org/?search={}',
 }

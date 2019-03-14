@@ -26,7 +26,6 @@ setopt auto_cd
 setopt nohup
 setopt noglobdots
 
-bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/bryn/.zshrc'
@@ -37,6 +36,7 @@ colors
 compinit
 
 PROMPT='%F{cyan}%~%f $ '
+export WORDCHARS=''
 
 # End of lines added by compinstall
 bindkey "^R" history-incremental-search-backward
@@ -48,7 +48,6 @@ alias less="less -R"
 alias ls="ls --color=auto"
 alias mpvboth='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=both'
 alias mpvpitch='mpv --no-audio-display --audio-pitch-correction=no --af=scaletempo=speed=pitch'
-alias ra='ranger'
 alias rmed='find . -type d -empty -delete'
 alias tc='transmission-cli'
 alias viewcsv='column -ts $"\t" | less'
@@ -100,4 +99,13 @@ jsonfmt()
     out=$(mktemp)
     jq . "$f" > "$out" && mv "$out" "$f"
   done
+}
+
+hless()
+{
+  if [ ! -z "$2" ]; then
+    highlight -O ansi --syntax "$1" "$2" | less -R
+  else
+    highlight -O ansi "$1" | less -R
+  fi
 }
