@@ -39,8 +39,20 @@ PROMPT='%F{cyan}%~%f $ '
 export WORDCHARS=''
 
 # End of lines added by compinstall
-bindkey "^R" history-incremental-search-backward
-bindkey "^F" history-incremental-search-forward
+bindkey "^R" fzy-history-widget
+bindkey "^F" fzy-file-widget
+bindkey "\ec" fzy-cd-widget
+
+function fzy-cd-command {
+	command find -L . -type d \( -path "*.git*/*" -o -path "*node_modules*/*" \
+		-o -fstype dev -o -fstype proc \) -prune -o -type d -print \
+		2> /dev/null | sed 1d | cut -b3-
+}
+zstyle :fzy:cd command fzy-cd-command
+function fzy-file-command {
+	command rg --files
+}
+zstyle :fzy:cd command fzy-file-command
 
 export EDITOR="kak"
 

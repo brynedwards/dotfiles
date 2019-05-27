@@ -7,8 +7,8 @@ config.bind("<Space>", "scroll-page 0 0.9")
 
 config.bind("S", "back")
 config.bind("D", "forward")
-config.bind("E", "tab-prev")
-config.bind("R", "tab-next")
+config.bind("H", "tab-prev")
+config.bind("L", "tab-next")
 
 config.bind("q", "tab-close")
 config.bind("Q", "undo")
@@ -46,4 +46,5 @@ c.url.searchengines = {
     'ddg': 'https://duckduckgo.com/?q={}',
     'aw': 'https://wiki.archlinux.org/?search={}',
     'w': 'https://en.wikipedia.org/?search={}',
+    'aur': 'https://aur.archlinux.org/packages/?O=0&K={}'
 }

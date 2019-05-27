@@ -13,18 +13,48 @@ addhl global/ show-matching
 #   auto-pairs-enable
 # }
 
-map -docstring "Open buffer via dmenu" global user b %{: dmenu-buffer .<ret>}
-map -docstring "Comment the current line" global user C %{: comment-line<ret>}
-map -docstring "Comment the current selection" global user c %{: comment-block<ret>}
-map -docstring "Goto definition" global user d %{: ctags-search<ret>}
-map -docstring "Format selection to 80 column width" global user f '|fmt -w80<ret>'
-map -docstring "Open horizontal Tmux repl " global user H %{: tmux-repl-horizontal<ret>}
 map -docstring "Open file via dmenu" global user o %{: dmenu-open .<ret>}
-map -docstring "Paste X11 clipboard after selection" global user p %{<a-!>xsel -bo<ret>}
-map -docstring "Paste X11 clipboard after selection" global user P %{!xsel -bo<ret>}
-map -docstring "Open X11 repl" global user R %{: my-x11-repl<ret>}
-map -docstring "Create a new kak client for the current session" global user s %{: new<ret>}
-map -docstring "Open terminal window" global user t %{: terminal zsh<ret>}
-map -docstring "Open ranger in new terminal window" global user T %{: terminal ranger<ret>}
-map -docstring "Copy selection to X11 clipboard" global user \
-  y %{<a-|>xsel -b<ret>;: echo "copied selection to X11 clipboard"<ret>}
+
+# Clipboard commands
+declare-user-mode clip
+
+map global user p ': enter-user-mode clip<ret>' \
+  -docstring 'clipboard commands'
+
+map global clip y %{<a-|>xsel -ib<ret>} \
+  -docstring "Copy selection to X11 clipboard"
+
+map global clip p %{<a-!>xsel -bo<ret>} \
+  -docstring "Paste X11 clipboard after selection" 
+map  global clip P %{!xsel -bo<ret>} \
+  -docstring "Paste X11 clipboard before selection"
+
+# Formatting commands
+declare-user-mode fmt
+
+map global user f ': enter-user-mode fmt<ret>' \
+  -docstring 'formatting commands'
+
+map -docstring "Comment the current line" global fmt c %{: comment-line<ret>}
+map -docstring "Comment the current selection" global fmt C %{: comment-block<ret>}
+map -docstring "Run formatter on file" global fmt f %{: format<ret>}
+map -docstring "Format selection to 80 column width" global fmt w '|fmt -w80<ret>'
+
+# New window commands
+declare-user-mode new
+
+map global user n ': enter-user-mode new<ret>' \
+  -docstring 'New client/terminal commands'
+
+map -docstring "Create a new kak client for the current session" global new s %{: new<ret>}
+map -docstring "Open terminal window" global new t %{: terminal zsh<ret>}
+map -docstring "Open ranger in new terminal window" global new T %{: terminal ranger<ret>}
+
+map global user l ': enter-user-mode lsp<ret>' \
+  -docstring 'lsp commands'
+
+eval %sh{kak-lsp --kakoune -s $kak_session}
+nop %sh{ (kak-lsp -s $kak_session -vvv) > /tmp/kak-lsp.log 2>&1 /dev/null & }
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+  lsp-enable-window
+}

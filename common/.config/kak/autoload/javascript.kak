@@ -1,9 +1,8 @@
 hook global WinSetOption filetype=javascript %{
-    map -docstring "Indent selection" buffer user i %{|prettier --parser babylon<ret>}
-    map -docstring "Indent file" buffer user I %{%,i<ret>}
+    set-option buffer formatcmd 'prettier --stdin --parser=babel'
 }
 
 hook global WinSetOption filetype=typescript %{
-    map -docstring "Indent selection" buffer user i %{|prettier --parser typescript<ret>}
-    map -docstring "Indent file" buffer user I %{%,i<ret>}
+    set-option buffer formatcmd 'prettier --stdin --parser=typescript'
+    set-option buffer lintcmd 'eslint --format=/usr/lib/node_modules/eslint-formatter-kakoune'
 }

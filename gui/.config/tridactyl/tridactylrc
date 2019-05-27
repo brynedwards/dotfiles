@@ -19,7 +19,7 @@ bind R tabnext
 bind q tabclose
 bind Q undo
 
-bind <Tab> fillcmdline buffer
+bind v fillcmdline buffer
 
 " For passff
 unbind <c-y>
@@ -42,4 +42,4 @@ set searchurls.sp https://startpage.com/do/search?language=english&cat=web&query
 set searchurls.gh https://github.com/search?utf8=✓&q=
 
 set theme dark
-set searchengine duckduckgo
+set searchengine google
