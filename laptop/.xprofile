@@ -2,5 +2,7 @@ pkill redshift
 redshift &
 pkill compton
 compton -b
+pkill dunst
+dunst &
 hsetroot -solid '#000000' &
 xsetroot -cursor_name left_ptr &
