@@ -82,7 +82,7 @@ source <(antibody init)
 antibody bundle < $HOME/.local/share/antibody/plugins
 source /usr/share/autojump/autojump.zsh
 
-PATH=$HOME/.local/bin:$PATH
+PATH=$HOME/.local/yarn/bin:$HOME/.local/bin:$PATH
 typeset -U path
 
 # Stack completion

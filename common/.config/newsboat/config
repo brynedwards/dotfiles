@@ -1,3 +1,0 @@
-browser "rlynx %u"
-auto-reload yes
-reload-time 120

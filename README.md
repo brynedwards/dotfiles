@@ -1,11 +1,5 @@
 Dotfiles, managed using GNU Stow
 
-## Dependencies
-
-Kakoune
-
-`git clone https://github.com/lenormf/kakoune-extra ~/.local/share/kakoune-extra`
-
 ### Example
 
 1. `git clone git@github.com:brynedwards/dotfiles ~/.dotfiles` (Use the
@@ -14,7 +8,7 @@ Kakoune
 3. `stow --no-folding common`
 
 Stow will tell you if there are any conflicts, it will not overwrite your
-existing dotfiles.
+existing files.
 
 ### Automatic Sync
 

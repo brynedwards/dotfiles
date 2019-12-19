@@ -1,6 +1,6 @@
 colorscheme desertex
 set global indentwidth 2
-set global termcmd "st sh -c"
+set global tabstop 2
 
 hook global WinSetOption filetype=kakrc %{
   set buffer indentwidth 4
@@ -9,16 +9,26 @@ hook global WinSetOption filetype=kakrc %{
 addhl global/ number-lines -hlcursor -relative
 addhl global/ show-matching
 
-# hook global WinCreate .* %{
-#   auto-pairs-enable
-# }
+hook global WinCreate .* %{
+  set buffer termcmd "st sh -c"
+}
 
-map -docstring "Open file via dmenu" global user o %{: dmenu-open .<ret>}
+evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
+
+# debug kak-lsp
+set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+  lsp-enable-window
+}
+
+# Delete
+map global normal D %{"_d""}
 
 # Clipboard commands
 declare-user-mode clip
 
-map global user p ': enter-user-mode clip<ret>' \
+map global user c ': enter-user-mode clip<ret>' \
   -docstring 'clipboard commands'
 
 map global clip y %{<a-|>xsel -ib<ret>} \
@@ -39,22 +49,66 @@ map -docstring "Comment the current line" global fmt c %{: comment-line<ret>}
 map -docstring "Comment the current selection" global fmt C %{: comment-block<ret>}
 map -docstring "Run formatter on file" global fmt f %{: format<ret>}
 map -docstring "Format selection to 80 column width" global fmt w '|fmt -w80<ret>'
+map global user l ': enter-user-mode lsp<ret>' \
+  -docstring 'lsp commands'
+
+# gdb commands
+declare-user-mode gdb
+
+map global user g ': enter-user-mode gdb<ret>' \
+  -docstring 'gdb commands'
+
+map global gdb b ': gdb-toggle-breakpoint<ret>' \
+  -docstring "toggle breakpoint"
+map global gdb c ': gdb-continue-or-run<ret>' \
+  -docstring "continue or run"
 
 # New window commands
 declare-user-mode new
 
 map global user n ': enter-user-mode new<ret>' \
-  -docstring 'New client/terminal commands'
+  -docstring 'new client/terminal commands'
 
 map -docstring "Create a new kak client for the current session" global new s %{: new<ret>}
 map -docstring "Open terminal window" global new t %{: terminal zsh<ret>}
 map -docstring "Open ranger in new terminal window" global new T %{: terminal ranger<ret>}
 
-map global user l ': enter-user-mode lsp<ret>' \
-  -docstring 'lsp commands'
 
-eval %sh{kak-lsp --kakoune -s $kak_session}
-nop %sh{ (kak-lsp -s $kak_session -vvv) > /tmp/kak-lsp.log 2>&1 /dev/null & }
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
-  lsp-enable-window
+map -docstring "Open file via dmenu" global user o %{: dmenu-open .<ret>}
+
+map global user r ': toggle-ranger<ret>' -docstring 'select files in ranger'
+
+declare-user-mode tig
+map global tig b ': tig-blame<ret>' -docstring 'show blame (with tig)'
+map global tig s ': suspend-and-resume "tig status"<ret>' -docstring 'show git status (with tig)'
+map global tig m ': suspend-and-resume "tig"<ret>' -docstring 'show main view (with tig)'
+
+map global user t ': enter-user-mode tig<ret>' -docstring 'tig commands'
+def toggle-ranger %{
+    suspend-and-resume \
+        "ranger --choosefiles=/tmp/ranger-files-%val{client_pid}" \
+        "for-each-line edit /tmp/ranger-files-%val{client_pid}"
+}
+
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+
+plug "andreyorst/plug.kak" noload
+plug "occivink/kakoune-gdb" %{
+  map global user g -docstring
+}
+
+
+hook global GlobalSetOption gdb_started=true %{
+    map global normal <f10>   ': gdb-next<ret>'
+    map global normal <f11>   ': gdb-step<ret>'
+    map global normal <s-f11> ': gdb-finish<ret>'
+    map global normal <f9>    ': gdb-toggle-breakpoint<ret>'
+    map global normal <f5>    ': gdb-continue<ret>'
+}
+hook global GlobalSetOption gdb_started=false %{
+    unmap global normal <f10>   ': gdb-next<ret>'
+    unmap global normal <f11>   ': gdb-step<ret>'
+    unmap global normal <s-f11> ': gdb-finish<ret>'
+    unmap global normal <f9>    ': gdb-toggle-breakpoint<ret>'
+    unmap global normal <f5>    ': gdb-continue<ret>'
 }
