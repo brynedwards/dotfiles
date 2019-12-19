@@ -78,8 +78,9 @@ DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi
 
 [[ -s ~/.zshrc.local ]] && source ~/.zshrc.local
 
-source <(antibody init)
-antibody bundle < $HOME/.local/share/antibody/plugins
+# TODO write a little thing to check if plugins.sh exists.
+# If not, create it.
+source $HOME/.local/share/antibody/plugins.sh
 source /usr/share/autojump/autojump.zsh
 
 PATH=$HOME/.local/yarn/bin:$HOME/.local/bin:$PATH
