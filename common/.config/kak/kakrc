@@ -16,7 +16,7 @@ hook global WinCreate .* %{
 evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
 
 # debug kak-lsp
-set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+# set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
   lsp-enable-window

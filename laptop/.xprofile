@@ -6,3 +6,4 @@ pkill dunst
 dunst &
 hsetroot -solid '#000000' &
 xsetroot -cursor_name left_ptr &
+export PATH="$HOME/.local/bin:$PATH"
