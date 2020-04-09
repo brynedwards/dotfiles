@@ -82,6 +82,7 @@ DSSI_PATH=/usr/lib/dssi:/usr/local/lib/dssi:~/.dssi
 # If not, create it.
 source $HOME/.local/share/antibody/plugins.sh
 source /usr/share/autojump/autojump.zsh
+source virtualenvwrapper.sh
 
 PATH=$HOME/.local/yarn/bin:$HOME/.local/bin:$PATH
 typeset -U path

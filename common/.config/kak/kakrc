@@ -1,4 +1,3 @@
-colorscheme desertex
 set global indentwidth 2
 set global tabstop 2
 
@@ -10,7 +9,7 @@ addhl global/ number-lines -hlcursor -relative
 addhl global/ show-matching
 
 hook global WinCreate .* %{
-  set buffer termcmd "st sh -c"
+  set buffer termcmd "alacritty -e sh -c"
 }
 
 evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
@@ -93,9 +92,8 @@ def toggle-ranger %{
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 plug "andreyorst/plug.kak" noload
-plug "occivink/kakoune-gdb" %{
-  map global user g -docstring
-}
+plug "ABuffSeagull/kakoune-vue"
+plug "occivink/kakoune-gdb"
 
 
 hook global GlobalSetOption gdb_started=true %{

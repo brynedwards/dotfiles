@@ -1,4 +1,5 @@
 Xft.dpi: 192
+
 rofi.font: mono 36
 rofi.color-enabled: true
 rofi.color-window: #171717, #ffdf00, #ffdf00
@@ -6,3 +7,64 @@ rofi.color-normal: #000000, #ffdf00, #171717, #ffdf00, #000000
 rofi.color-active: #000000, #268bd2, #171717, #268bd2, #fdf6e3
 rofi.color-urgent: #000000, #dc322f, #171717, #dc322f, #fdf6e3
 rofi.terminal: st
+
+St.font: mono:size=9:antialias=true:autohint=true
+
+St.background: #000000
+St.foreground: #ffffff
+
+! standard
+
+! black
+St.color0: #000000
+St.color8: #262626
+
+! red
+St.color1: #ff0000
+St.color9: #ff8080
+
+! green
+St.color2: #00ff00
+St.color10: #80ff80
+
+! yellow
+St.color3: #ffff00
+St.color11: #ffff80
+
+! blue
+St.color4: #1e90ff
+St.color12: #80b0ff
+
+! magenta
+St.color5: #ff00ff
+St.color13: #ff80ff
+
+! cyan
+St.color6: #00ffff
+St.color14: #80ffff
+
+! white
+St.color7: #808080
+St.color15: #ffffff
+
+
+! jellybeans
+! *color0: #393939
+! *color1: #ca674a
+! *color2: #96a967
+! *color3: #d3a94a
+! *color4: #5778c1
+! *color5: #9c35ac
+! *color6: #6eb5f3
+! *color7: #a9a9a9
+! *color8: #535551
+! *color9: #ea2828
+! *color10: #87dd32
+! *color11: #f7e44d
+! *color12: #6f9bca
+! *color13: #a97ca4
+! *color14: #32dddd
+! *color15: #e9e9e7
+
+Sxiv.background: #000000
+Sxiv.foreground: #606060
